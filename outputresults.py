@@ -1,0 +1,4 @@
+
+
+def outputDay():
+    print("Outputting")
