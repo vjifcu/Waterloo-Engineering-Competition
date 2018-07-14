@@ -1,4 +1,4 @@
-import loaddata, forecast, outputresults
+import loaddata, forecast, outputresults, guiIO
 import os
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
@@ -17,6 +17,7 @@ def main():
     
     #We now perform analysis on the data set
     forecast.analyzeRaw(raw_data)
+    #gui.startGui()
 
     #Finally we output results for the selected day/month
     outputresults.outputDay()
