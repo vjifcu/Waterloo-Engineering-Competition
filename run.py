@@ -3,20 +3,24 @@ import os
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 
+
 def main():
+    data_dir = this_dir + "/sourcedata/"
+    field_list = {'Net Radiometer': 5, 'Ambient Air Temperature': 9}
+
     #First we load the raw csv data
     try:
-        data_dir = this_dir + "/sourcedata/"
-        raw_data = loaddata.loadRawIntoDict(data_dir)
+        raw_data = loaddata.loadRawIntoDict(data_dir, field_list)
     except KeyError as e:
         print(str(e))
         print("Could not load data\n")
         exit()
-    
-    print(raw_data['1998']['69']['130']['Ambient Air Temperature'])
+
+    #Get input fields
+    input_selections = {'year': '1998', 'day': '69'}
     
     #We now perform analysis on the data set
-    forecast.analyzeRaw(raw_data)
+    forecast.analyzeRaw(raw_data, input_selections)
 
     #Finally we output results for the selected day/month
     outputresults.outputDay()
