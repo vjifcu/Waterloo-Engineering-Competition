@@ -65,7 +65,5 @@ def fitSingleYear(raw_data, year, field):
     for day in raw_data[year]:
         x.append(int(day))
         y.append(float(raw_data[year][day][field]))
-    print(x)
-    print(y)
     coeffs = np.polyfit(x, y, 7)
     return np.poly1d(coeffs)

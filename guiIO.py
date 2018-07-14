@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.ttk import *
 from tkinter import messagebox
+import run
 
 def is_valid_day(x):
     try:
@@ -20,7 +21,7 @@ def clicked():
         return
     
     #run code
-    print(daySelector.get())
+    run.predict(int(yearSelector.get()), int(daySelector.get()))
 
 window = Tk()
 window.title("Weather Forcastatron 9000")
