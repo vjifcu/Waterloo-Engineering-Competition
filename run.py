@@ -17,10 +17,10 @@ def main():
         exit()
 
     #Get input fields
-    input_selections = {'year': 1999, 'day': 69}
+    input_selections = {'year': 1999, 'day': 330}
     
     #We now perform analysis on the data set
-    forecast.analyzeRaw(raw_data, input_selections)
+    min_temp, max_temp = forecast.analyzeRaw(raw_data, input_selections)
 
     #Finally we output results for the selected day/month
     outputresults.outputDay()
