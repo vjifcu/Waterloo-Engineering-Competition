@@ -4,7 +4,7 @@ import os
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = this_dir + "/sourcedata/"
-field_list = {'Net Radiometer': 5, 'Ambient Air Temperature': 9}
+field_list = {'Net Radiometer': 5, 'Ambient Air Temperature': 9, 'Precipitation (Tipping Bucket)': 0}
 raw_data = None
 
 

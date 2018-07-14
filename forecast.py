@@ -11,14 +11,19 @@ def analyzeRaw(raw_data, user_request):
         for day in raw_data[year]:
             #Get minimum and maximum temperatures
             day_min, day_max = getMinMax(raw_data[year][day])
+            # precip_sum = getTotalPrecipitation(raw_data[year][day])
             raw_data[year][day]['min_temp'] = float(day_min)
             raw_data[year][day]['max_temp'] = float(day_max)
+            # raw_data[year][day]['precipitation'] = float(precip_sum)
+
         fits['year'] = {}
         fits['year']['max_temp_fit'] = fitSingleYear(raw_data, year, 'max_temp')
         fits['year']['min_temp_fit'] = fitSingleYear(raw_data, year, 'min_temp')
+        # fits['year']['precip_fit'] = fitSingleYear(raw_data, year, 'precipitation')
 
 
     #We now retrieve the data for the requested year and day
+
     #Minimum temperature
     to_average = list()
     for year in raw_data:
@@ -35,10 +40,18 @@ def analyzeRaw(raw_data, user_request):
     average = sum(to_average)/len(to_average)
     avg_max = average
 
+    # #Total precipitation
+    # to_average = list()
+    # for year in raw_data:
+    #     fit_func = fits['year']['precip_fit']
+    #     to_average.append(fit_func(user_request['day']))
+    # average = sum(to_average)/len(to_average)
+    # avg_precip = average
+
     return (avg_min, avg_max)
 
 
-
+#Locates the maximum and minimum temperature readings in a day
 def getMinMax(day):
     daily_min = None
     daily_max = None
@@ -54,6 +67,14 @@ def getMinMax(day):
         if float(day[time]['Ambient Air Temperature']) > float(daily_max):
             daily_max = day[time]['Ambient Air Temperature']
     return (daily_min, daily_max)
+
+
+#This function totals the amount of precipitation over a full day
+def getTotalPrecipitation(day):
+    totalPrecip = 0
+    for time in day:
+        totalPrecip = totalPrecip + float(day[time]['Precipitation (Tipping Bucket)'])
+    return totalPrecip
 
 
 #Takes in raw data for a given field for a given year and generates

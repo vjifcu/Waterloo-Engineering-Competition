@@ -26,6 +26,8 @@ def loadRawIntoDict(data_dir, field_list):
                         time_col = firstRow
                     elif val == 'Ambient Air Temperature':
                         field_list['Ambient Air Temperature'] = firstRow
+                    elif val == 'Precipitation (Tipping Bucket)':
+                        field_list['Precipitation (Tipping Bucket)'] = firstRow
                     firstRow = firstRow + 1
                 firstRow = 0
             else:
