@@ -1,4 +1,5 @@
-import loaddata, forecast, outputresults, guiIO
+import loaddata, forecast, guiIO
+
 import os
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
@@ -17,7 +18,7 @@ def predict(year, day):
     #First we load the raw csv data
     try:
         raw_data = loaddata.loadRawIntoDict(data_dir, field_list)
-    except KeyError as e:
+    except FileNotFoundError as e:
         print(str(e))
         print("Could not load data\n")
         exit()
@@ -29,7 +30,7 @@ def predict(year, day):
     min_temp, max_temp = forecast.analyzeRaw(raw_data, input_selections)
 
     #Finally we output results for the selected day/month
-    outputresults.outputDay()
+    guiIO.outputResult("Historical daily low: " + str(min_temp) + "\nHistorical daily high: " + str(max_temp))
 
 
 if __name__ == '__main__':

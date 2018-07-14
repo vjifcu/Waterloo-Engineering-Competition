@@ -24,7 +24,7 @@ def clicked():
     run.predict(int(yearSelector.get()), int(daySelector.get()))
 
 def outputResult(result):
-    messagebox("Result", result)
+    messagebox.showinfo("Result", result)
 
 window = Tk()
 window.title("Weather Forcastatron 9000")
