@@ -13,8 +13,10 @@ def main():
         print("Could not load data\n")
         exit()
     
+    print(raw_data['1998']['69']['130']['Ambient Air Temperature'])
+    
     #We now perform analysis on the data set
-    forecast.analyzeRaw()
+    forecast.analyzeRaw(raw_data)
 
     #Finally we output results for the selected day/month
     outputresults.outputDay()
