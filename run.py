@@ -17,7 +17,7 @@ def main():
         exit()
 
     #Get input fields
-    input_selections = {'year': '1998', 'day': '69'}
+    input_selections = {'year': 1999, 'day': 69}
     
     #We now perform analysis on the data set
     forecast.analyzeRaw(raw_data, input_selections)

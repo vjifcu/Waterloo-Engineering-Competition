@@ -14,6 +14,11 @@ def loadRawIntoDict(data_dir, field_list):
         for row in raw_list:
             if firstRow:
                 firstRow = 0
+                for val in row:
+                    if val == 'Ambient Air Temperature':
+                        field_list['Ambient Air Temperature'] = firstRow
+                    firstRow = firstRow + 1
+                firstRow = 0
             else:
                 #First add year to dictionary if not present
                 if not row[1] in raw_dict:
