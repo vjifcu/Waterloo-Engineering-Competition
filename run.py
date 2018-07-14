@@ -1,4 +1,4 @@
-import loaddata, forecast, outputresults
+import loaddata, forecast, outputresults, guiIO
 import os
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
