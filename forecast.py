@@ -25,7 +25,7 @@ def analyzeRaw(raw_data, user_request):
         fit_func = fits['year']['min_temp_fit']
         to_average.append(fit_func(user_request['day']))
     average = sum(to_average)/len(to_average)
-    print (average)
+    avg_min = average
 
     #Maximum temperature
     to_average = list()
@@ -33,8 +33,9 @@ def analyzeRaw(raw_data, user_request):
         fit_func = fits['year']['max_temp_fit']
         to_average.append(fit_func(user_request['day']))
     average = sum(to_average)/len(to_average)
+    avg_max = average
 
-    print (average)
+    return (avg_min, avg_max)
 
 
 
@@ -64,5 +65,7 @@ def fitSingleYear(raw_data, year, field):
     for day in raw_data[year]:
         x.append(int(day))
         y.append(float(raw_data[year][day][field]))
+    print(x)
+    print(y)
     coeffs = np.polyfit(x, y, 7)
     return np.poly1d(coeffs)
