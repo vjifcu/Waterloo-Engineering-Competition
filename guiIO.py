@@ -22,6 +22,9 @@ def clicked():
     #run code
     print(daySelector.get())
 
+def outputResult(result):
+    messagebox("Result", result)
+
 window = Tk()
 window.title("Weather Forcastatron 9000")
 #window.geometry('500x350')
